@@ -23,7 +23,7 @@ YELLOW="\033[33m"
 B="\033[1;4m"
 NC="\033[0m"
 
-JUDGE_DIR=$(greadlink -f "$JUDGE_DIR")
+JUDGE_DIR=$(realpath "$JUDGE_DIR")
 
 
 
@@ -61,7 +61,7 @@ elif [[ $1 == "--generate" ]] || [[  $1 == "-g" ]]; then
     if [[ ! -e $TEMP_DIR ]]; then
         mkdir $TEMP_DIR
     fi
-    MAINCODE_ADDR=$(greadlink -f "$MAINCODE_ADDR")
+    MAINCODE_ADDR=$(realpath "$MAINCODE_ADDR")
 
     pushd "$TEMP_DIR" > /dev/null
     rm * 2> /dev/null
@@ -108,7 +108,7 @@ else
         mkdir $TEMP_DIR
     fi
 
-    CODE_ADDR=$(greadlink -f "$CODE_ADDR")
+    CODE_ADDR=$(realpath  "$CODE_ADDR")
 
     pushd "$TEMP_DIR" > /dev/null
     rm * 2> /dev/null
@@ -133,7 +133,7 @@ else
             rm input.txt 2> /dev/null
             rm output.txt 2> /dev/null
             cp "$JUDGE_DIR/$test_case/input.txt" input.txt
-            if gtimeout $TIME_LIM ./$EXE < "$input" ; then
+            if timeout $TIME_LIM ./$EXE < "$input" ; then
                 rm "$output" 2> /dev/null
                 cp output.txt "$output"
 
