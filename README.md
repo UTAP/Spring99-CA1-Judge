@@ -23,12 +23,8 @@ For example we can judge our sample code like this:
 ```
 
 ### Mac OS Users
-At first, you should install `coreutils`:
-```
-brew install coreutils
-```
 
-Then you should give judge permissions to run by this command:
+At first, you should give judge permissions to run by this command:
 ```
 chmod 755 mac_judge.sh
 ```
